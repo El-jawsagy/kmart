@@ -1,3 +1,4 @@
+//to dummy discount
 import 'dart:math';
 
 //screen to navigate for it
@@ -24,8 +25,9 @@ class ProductOfferItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () =>
-            Navigator.pushNamed(context, ProductDetailsScreen.routeNamed,arguments: productdata),
+        onTap: () => Navigator.pushNamed(
+            context, ProductDetailsScreen.routeNamed,
+            arguments: productdata),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(

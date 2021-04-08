@@ -1,14 +1,13 @@
-// theme and colors
+//to dummy discount
 import 'dart:math';
 
-import 'package:kmarket/providers/products/products_provider.dart';
-import 'package:kmarket/widgets/sheared_materials_widgets.dart';
-
+// theme and colors
 import '../../theme/theme.dart';
 
 //widget used in product screens
 import '../../widgets/appbar_widget.dart';
 import '../../widgets/bage_widget.dart';
+import '../../widgets/sheared_materials_widgets.dart';
 
 //provider
 import '../../providers/cart/cart_provider.dart';

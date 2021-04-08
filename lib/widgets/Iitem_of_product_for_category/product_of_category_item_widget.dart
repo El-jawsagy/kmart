@@ -1,4 +1,4 @@
-import 'dart:html';
+//to dummy discount
 import 'dart:math';
 
 //Screen to navigate for it
