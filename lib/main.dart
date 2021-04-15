@@ -1,5 +1,7 @@
 //screen to navagit for it
-
+import './views/address/add_new_address.dart';
+import './views/address/address_screen.dart';
+import './views/favorite/favorite_screen.dart';
 import './views/category/category_product_details_screen.dart';
 import './views/product/product_details_screen.dart';
 import './views/home/main_screen.dart';
@@ -14,7 +16,8 @@ import './theme/theme.dart';
 import './providers/cart/cart_provider.dart';
 import './providers/category/catergory_provider.dart';
 import './providers/products/products_provider.dart';
-import './providers/favorite/order_provider.dart';
+import './providers/order/order_provider.dart';
+import './providers/favorite/favorite_provider.dart';
 
 //pub and core package
 import 'package:flutter/material.dart';
@@ -44,6 +47,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Order(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => Favorite(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -56,6 +62,9 @@ class MyApp extends StatelessWidget {
           ProductOfCategoryScreen.routeNamed: (ctx) =>
               ProductOfCategoryScreen(),
           ProductDetailsScreen.routeNamed: (ctx) => ProductDetailsScreen(),
+          FavoriteScreen.routeNamed: (ctx) => FavoriteScreen(),
+          AddressScreen.routeNamed: (ctx) => AddressScreen(),
+          AddNewAddressScreen.routeNamed: (ctx) => AddNewAddressScreen(),
         },
       ),
     );

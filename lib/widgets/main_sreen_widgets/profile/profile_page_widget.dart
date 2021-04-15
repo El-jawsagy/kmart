@@ -1,5 +1,11 @@
 //theme and colors
+
 import '../../../theme/theme.dart';
+
+//screen that navigate for it
+import '../../../views/address/address_screen.dart';
+import '../../../views/auth/login_screen.dart';
+import '../../../views/favorite/favorite_screen.dart';
 //widget that sheared in all
 import '../../../widgets/sheared_materials_widgets.dart';
 //pub and core package
@@ -60,11 +66,23 @@ class ProfilePageWidget extends StatelessWidget {
           userCtx: context,
           image: "assets/images/candidate.png",
           title: "My Adderss",
+          onTapAtRow: () {
+            Navigator.pushNamed(
+              context,
+              AddressScreen.routeNamed,
+            );
+          },
         ),
         rowOfScreenRelatedWithUser(
           userCtx: context,
           image: "assets/images/add-to-favorites.png",
           title: "My Favorite",
+          onTapAtRow: () {
+            Navigator.pushNamed(
+              context,
+              FavoriteScreen.routeNamed,
+            );
+          },
         ),
         rowOfScreenRelatedWithUser(
           userCtx: context,
@@ -80,13 +98,19 @@ class ProfilePageWidget extends StatelessWidget {
           userCtx: context,
           image: "assets/images/exit.png",
           title: "Log Out",
+          onTapAtRow: () {
+            Navigator.pushReplacementNamed(
+              context,
+              LoginScreen.routeNamed,
+            );
+          },
         ),
       ],
     );
   }
 
   Padding rowOfScreenRelatedWithUser(
-      {BuildContext userCtx, String image, title, screenShortCut}) {
+      {BuildContext userCtx, String image, title, Function onTapAtRow}) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16.0,
@@ -96,6 +120,7 @@ class ProfilePageWidget extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20.0,
         ),
+        onTap: onTapAtRow,
         leading: anyImage(
           ctx: userCtx,
           imagePath: image,

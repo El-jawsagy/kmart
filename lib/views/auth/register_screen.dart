@@ -147,7 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             giveWidthSpace(ctx: signInCtx, widthFactor: 0.01),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, LoginScreen.routeNamed);
+                Navigator.pushReplacementNamed(context, LoginScreen.routeNamed);
               },
               child: Text(
                 "Login",

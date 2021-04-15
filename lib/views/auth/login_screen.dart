@@ -150,7 +150,8 @@ class _LoginScreenState extends State<LoginScreen> {
             giveWidthSpace(ctx: signUpCtx, widthFactor: 0.01),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, RegisterScreen.routeNamed);
+                Navigator.pushReplacementNamed(
+                    context, RegisterScreen.routeNamed);
               },
               child: Text(
                 "Register",

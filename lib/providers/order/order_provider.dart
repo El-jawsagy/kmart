@@ -1,10 +1,11 @@
-
+//provider
+import '../../providers/cart/cart_provider.dart';
 
 // Pub and core package
 import 'package:flutter/material.dart';
 
 class OrderItem {
-  Map<String, dynamic> product;
+  Map<String, CartItem> product;
   double price;
 
   OrderItem({
@@ -28,8 +29,10 @@ class Order with ChangeNotifier {
     String id,
     OrderItem order,
   }) {
-    _orderItems.add({
-      id: order,
-    },);
+    _orderItems.add(
+      {
+        id: order,
+      },
+    );
   }
 }

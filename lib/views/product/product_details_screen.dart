@@ -2,6 +2,7 @@
 import 'dart:math';
 
 // theme and colors
+
 import '../../theme/theme.dart';
 
 //widget used in product screens
@@ -11,6 +12,7 @@ import '../../widgets/sheared_materials_widgets.dart';
 
 //provider
 import '../../providers/cart/cart_provider.dart';
+import '../../providers/favorite/favorite_provider.dart';
 
 //pub and core package
 import 'package:provider/provider.dart';
@@ -30,6 +32,24 @@ class ProductDetailsScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.headline2,
           ),
           actions: [
+            Consumer<Favorite>(
+              builder: (_, favoriteProvider, child) {
+                return IconButton(
+                    icon: Icon(
+                      favoriteProvider
+                              .toggleProductTofavoriteItems(productData["id"])
+                          ? Icons.favorite
+                          : Icons.favorite_border_outlined,
+                      color: CustomColors.mainColor,
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      favoriteProvider.addOrRemoveFavoritItem(
+                          id: DateTime.now().toString(),
+                          favoriteItem: productData);
+                    });
+              },
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Consumer<Cart>(
@@ -46,7 +66,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   size: 30,
                 ),
               ),
-            )
+            ),
           ]),
       body: Padding(
         padding: const EdgeInsets.symmetric(

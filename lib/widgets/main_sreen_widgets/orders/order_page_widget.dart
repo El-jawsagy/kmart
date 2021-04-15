@@ -2,11 +2,12 @@
 import '../../sheared_materials_widgets.dart';
 
 //providers
-import '../../../providers/favorite/order_provider.dart';
+import '../../../providers/order/order_provider.dart';
 
 //pub and core package
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+
 class OrderPageWidget extends StatelessWidget {
   const OrderPageWidget({Key key}) : super(key: key);
 
@@ -29,7 +30,27 @@ class OrderPageWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: ListView.builder(
               shrinkWrap: true,
-              itemBuilder: (ctx, index) {},
+              itemBuilder: (ctx, index) {
+                print(provider.orderItems[index].values
+                    .toList()[index]
+                    .product
+                    .values
+                    .toList());
+                return Container(
+                  child: Column(
+                    children: [
+                      // Row(
+                      //   children: [
+                      //     Text("Order placed on:"),
+                      //     Text(provider.orderItems[index].values.first
+                      //         .product[index].values
+                      //         .toList()[0]["id"]),
+                      //   ],
+                      // )
+                    ],
+                  ),
+                );
+              },
               itemCount: provider.orderItems.length,
             ),
           ),

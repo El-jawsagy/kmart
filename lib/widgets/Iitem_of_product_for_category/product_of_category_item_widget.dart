@@ -92,16 +92,22 @@ class ProductcategoryItem extends StatelessWidget {
                       ],
                     ),
                     giveHeightSpace(ctx: context, heightFactor: 0.02),
-                    Center(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: Text(
-                          productdata["title-en"],
-                          maxLines: 3,
-                          style: Theme.of(context).textTheme.headline4.copyWith(
-                              color: CustomColors.titleBlackColor,
-                              fontWeight: FontWeight.w600),
-                          textAlign: TextAlign.start,
+                    FittedBox(
+                      child: Center(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: Text(
+                            productdata["title-en"],
+                            maxLines: 2,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4
+                                .copyWith(
+                                    color: CustomColors.titleBlackColor,
+                                    fontWeight: FontWeight.w600),
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ),
