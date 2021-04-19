@@ -182,7 +182,7 @@ class ProductcategoryItem extends StatelessWidget {
                                         .copyWith(
                                             color: CustomColors.whiteColor),
                                   ),
-                                  onTapFun: () {
+                                  onTapFunc: () {
                                     cartProvider.addProductToOrder(
                                         productdata["id"], productdata, 1);
                                   },

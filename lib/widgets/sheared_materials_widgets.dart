@@ -23,14 +23,14 @@ Widget roundedTextButton({
   BuildContext ctx,
   Widget childWidget,
   Color usedColor = CustomColors.mainColor,
-  Function onTapFun,
+  Function onTapFunc,
   BorderSide border,
   double widthFactor = .9,
   double heightFactor = .07,
   double radiusValue = 7,
 }) {
   return TextButton(
-    onPressed: () => onTapFun(),
+    onPressed: () => onTapFunc(),
     style: TextButton.styleFrom(
       shadowColor: CustomColors.subTitleColor,
       backgroundColor: usedColor,

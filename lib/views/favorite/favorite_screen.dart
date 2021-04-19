@@ -197,7 +197,7 @@ class FavoriteScreen extends StatelessWidget {
                                           .copyWith(
                                               color: CustomColors.whiteColor),
                                     ),
-                                    onTapFun: () {
+                                    onTapFunc: () {
                                       cartProvider.addProductToOrder(
                                           singleFavoriteItem["id"],
                                           singleFavoriteItem,

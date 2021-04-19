@@ -15,8 +15,8 @@ import '../../providers/address/address_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddNewAddressScreen extends StatelessWidget {
-  static final String routeNamed = "addNewAddressScreen";
+class EditAddressScreen extends StatelessWidget {
+  static final String routeNamed = "editAddressScreen";
 
   final TextEditingController lineOneController = TextEditingController();
   final TextEditingController lineTwoController = TextEditingController();
@@ -28,11 +28,20 @@ class AddNewAddressScreen extends StatelessWidget {
   final TextEditingController linePhoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    Map oldAddress = ModalRoute.of(context).settings.arguments as Map;
+    lineOneController.text = oldAddress["address"]["title"];
+    lineTwoController.text = oldAddress["address"]["title_two"];
+    lineCityController.text = oldAddress["address"]["city"];
+    lineStateController.text = oldAddress["address"]["state"];
+    linePostalCodeController.text = oldAddress["address"]["postal_code"];
+    lineCountryController.text = oldAddress["address"]["country"];
+    linePhoneController.text = oldAddress["address"]["phone"];
+
     return Scaffold(
       appBar: appBarWidget(
         appCtx: context,
         title: Text(
-          "New Address",
+          "Edit Address",
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
@@ -42,7 +51,7 @@ class AddNewAddressScreen extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Add Address",
+                "Edit your address",
                 style: Theme.of(context).textTheme.headline2.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -52,7 +61,7 @@ class AddNewAddressScreen extends StatelessWidget {
                 heightFactor: 0.015,
               ),
               Text(
-                "please fill the form below",
+                "please change value ftom the form below and save",
                 style: Theme.of(context).textTheme.headline2.copyWith(
                       fontWeight: FontWeight.w400,
                     ),
@@ -175,31 +184,54 @@ class AddNewAddressScreen extends StatelessWidget {
                     heightFactor: 0.05,
                     widthFactor: 0.3,
                     onTapFunc: () {
-                      addressProvider.addAddressToList(
-                          id: DateTime.now().toString(),
-                          address: {
-                            "title": lineOneController.text,
-                            "title_two": lineTwoController.text,
-                            "city": lineCityController.text,
-                            "state": lineStateController.text,
-                            "postal_code": linePostalCodeController.text,
-                            "country": lineCountryController.text,
-                            "phone": linePhoneController.text,
-                          });
-                      lineOneController.clear();
-                      lineOneController.clear();
-                      lineCityController.clear();
-                      lineStateController.clear();
-                      linePostalCodeController.clear();
-                      lineCountryController.clear();
-                      linePhoneController.clear();
-                      Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          AddressScreen.routeNamed,
-                          ModalRoute.withName(MainScreen.routeNamed));
+                      if (lineOneController.text !=
+                              oldAddress["address"]["title"] ||
+                          lineTwoController.text !=
+                              oldAddress["address"]["title_two"] ||
+                          lineCityController.text !=
+                              oldAddress["address"]["city"] ||
+                          lineStateController.text !=
+                              oldAddress["address"]["state"] ||
+                          linePostalCodeController.text !=
+                              oldAddress["address"]["postal_code"] ||
+                          lineCountryController.text !=
+                              oldAddress["address"]["country"] ||
+                          linePhoneController.text !=
+                              oldAddress["address"]["phone"]) {
+                        addressProvider.updateAddressToList(
+                            id: oldAddress["id"],
+                            address: {
+                              "title": lineOneController.text,
+                              "title_two": lineTwoController.text,
+                              "city": lineCityController.text,
+                              "state": lineStateController.text,
+                              "postal_code": linePostalCodeController.text,
+                              "country": lineCountryController.text,
+                              "phone": linePhoneController.text,
+                            });
+                        lineOneController.clear();
+                        lineOneController.clear();
+                        lineCityController.clear();
+                        lineStateController.clear();
+                        linePostalCodeController.clear();
+                        lineCountryController.clear();
+                        linePhoneController.clear();
+                        Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            AddressScreen.routeNamed,
+                            ModalRoute.withName(MainScreen.routeNamed));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "you need to modify your address to be able for save ",
+                            ),
+                          ),
+                        );
+                      }
                     },
                     childWidget: Text(
-                      "Add",
+                      "Save",
                       style: Theme.of(context).textTheme.headline2.copyWith(
                             fontWeight: FontWeight.w400,
                             color: CustomColors.whiteColor,

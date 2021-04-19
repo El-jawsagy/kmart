@@ -1,4 +1,6 @@
 //screen to navagit for it
+
+import './views/address/edit_address.dart';
 import './views/address/add_new_address.dart';
 import './views/address/address_screen.dart';
 import './views/favorite/favorite_screen.dart';
@@ -18,6 +20,7 @@ import './providers/category/catergory_provider.dart';
 import './providers/products/products_provider.dart';
 import './providers/order/order_provider.dart';
 import './providers/favorite/favorite_provider.dart';
+import './providers/address/address_provider.dart';
 
 //pub and core package
 import 'package:flutter/material.dart';
@@ -50,9 +53,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Favorite(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => Address(),
+        ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Kmart',
         theme: lightTheme,
         home: OnbardingScreen(),
         routes: {
@@ -65,6 +71,7 @@ class MyApp extends StatelessWidget {
           FavoriteScreen.routeNamed: (ctx) => FavoriteScreen(),
           AddressScreen.routeNamed: (ctx) => AddressScreen(),
           AddNewAddressScreen.routeNamed: (ctx) => AddNewAddressScreen(),
+          EditAddressScreen.routeNamed: (ctx) => EditAddressScreen(),
         },
       ),
     );

@@ -36,7 +36,7 @@ class OnbardingScreen extends StatelessWidget {
             ),
             roundedTextButton(
               ctx: context,
-              onTapFun: () {
+              onTapFunc: () {
                 Navigator.pushReplacementNamed(context, LoginScreen.routeNamed);
               },
               childWidget: Text(
@@ -54,7 +54,7 @@ class OnbardingScreen extends StatelessWidget {
             roundedTextButton(
               ctx: context,
               usedColor: CustomColors.whiteColor,
-              onTapFun: () {
+              onTapFunc: () {
                 Navigator.pushNamed(context, RegisterScreen.routeNamed);
               },
               border: BorderSide(

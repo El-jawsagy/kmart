@@ -208,7 +208,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                         .copyWith(
                                             color: CustomColors.whiteColor),
                                   ),
-                                  onTapFun: () {
+                                  onTapFunc: () {
                                     cartProvider.addProductToOrder(
                                         productData["id"], productData, 1);
                                   },

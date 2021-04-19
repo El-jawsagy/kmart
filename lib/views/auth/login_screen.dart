@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ctx: context,
                       heightFactor: 0.06,
                       widthFactor: 0.25,
-                      onTapFun: () {
+                      onTapFunc: () {
                         Navigator.pushReplacementNamed(
                             context, MainScreen.routeNamed);
                       },

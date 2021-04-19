@@ -114,7 +114,7 @@ class CartPageWidget extends StatelessWidget {
               widthFactor: 0.3,
               heightFactor: 0.055,
               usedColor: CustomColors.mainColor.withOpacity(0.9),
-              onTapFun: () {
+              onTapFunc: () {
                 // Navigator.pushNamed(cartCtx, RegisterScreen.routeNamed);
                 print("your cart items : ${provider.cartItems}");
                 Provider.of<Order>(cartCtx, listen: false).addOrderToList(
@@ -190,7 +190,7 @@ class CartPageWidget extends StatelessWidget {
         ),
         roundedTextButton(
           ctx: context,
-          onTapFun: () =>
+          onTapFunc: () =>
               Navigator.pushReplacementNamed(context, MainScreen.routeNamed),
           childWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
